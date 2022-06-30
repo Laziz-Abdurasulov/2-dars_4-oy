@@ -463,6 +463,9 @@ elSelect.addEventListener('change', function () {
 	dom(result, elList);
 });
 
+
+
+
 const optionsList = new Set();
 
 const optionList = [];
@@ -471,6 +474,9 @@ films.forEach((element) => {
 	element.type.forEach((el) => optionsList.add(el));
 })  
 	
+
+
+
 optionsList.forEach((type) => {
 	let newOption = document.createElement('option');
 	newOption.textContent = type;
