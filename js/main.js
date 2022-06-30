@@ -471,15 +471,15 @@ const optionsList = new Set();
 const optionList = [];
 
 films.forEach((element) => {
-	element.type.forEach((el) => optionsList.add(el));
+	element.genres.forEach((el) => optionsList.add(el));
 })  
 	
 
 
 
-optionsList.forEach((type) => {
+optionsList.forEach((genres) => {
 	let newOption = document.createElement('option');
-	newOption.textContent = type;
-	newOption.value = type;
+	newOption.textContent = genres;
+	newOption.value = genres;
 	elSelect.appendChild(newOption);
 })
