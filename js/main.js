@@ -484,21 +484,48 @@ optionsList.forEach((genres) => {
 // ----------------------------------------select2
 const elSelect2 = document.querySelector('.js-select2');
 
-elSelect2.addEventListener("change", function(){
-   elList.innerHTML = "";
-   let result2 = [];
+
+elSelect2.addEventListener("change", function () {
+   let elva = elSelect2.value;
+ 
+   let sortedFilms = films.sort((a, b) => {
+     if (elva === "A-Z") {
+       if (a.title > b.title) {
+         return 1;
+       } else {
+         return -1;
+       }
+     } else {
+       if (a.title < b.title) {
+         return 1;
+       } else {
+         return -1;
+       }
+     }
+   });
+ 
+   dom(sortedFilms, elList);
+   console.log(elva);
+ });
+ 
+ dom(films, elList);
+ 
+
+// elSelect2.addEventListener("change", function(){
+//    elList.innerHTML = "";
+//    let result2 = [];
 
    
-   result2 = films.sort(function (a, b) {
-       if (b.title > a.title && elSelect2.value === 'A-Z') {
-           return -1;
-       }
-       else if(a.title > b.title){
-           return -1
-       }
-       return films
-   });
-   dom(result2, elList)
-});
+//    result2 = films.sort(function (a, b) {
+//        if (b.title > a.title && elSelect2.value === 'A-Z') {
+//            return -1;
+//        }
+//        else if(a.title > b.title){
+//            return -1
+//        }
+//        return films
+//    });
+//    dom(result2, elList)
+// });
    
 
