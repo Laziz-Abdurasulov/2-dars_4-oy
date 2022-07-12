@@ -406,7 +406,7 @@ var films = [
  ];
  
  var elList = document.querySelector(".js-list");
- 
+ let elUl = document.querySelector(".new-ul");
  function dom(array, node) {
    elList.innerHTML = "";
    for (film of array) {
@@ -417,10 +417,13 @@ var films = [
      var newId = document.createElement("span");
      var newDate = document.createElement("p");
      var newGenres = document.createElement("p");
+     let Bookmark = document.createElement("button");
      newPoster.setAttribute("src", film.poster);
      newPoster.setAttribute("width", 300);
      newPoster.setAttribute("height", 450);
      newPoster.setAttribute("class", "js-poster");
+     Bookmark.textContent = "Bookmark"
+     Bookmark.dataset.todoId = film.id;
  
      newOverview.setAttribute("class", "js-text");
      newId.setAttribute("class", "js-id");
@@ -428,18 +431,28 @@ var films = [
      newGenres.setAttribute("class", "js-genres");
      newTitle.setAttribute("class", "js-title");
      newItem.setAttribute("class", "item");
+     Bookmark.setAttribute("class", "bookmark");
+
+     Bookmark.addEventListener("click", function(){
+      
+      let newItem2 = document.createElement("li");
+      newItem2.textContent = film.title;
+      elUl.appendChild(newItem2)
+      
+     })
  
      newTitle.textContent = film.title;
      newDate.textContent = film.release_date;
      newId.textContent = `id:${film.id}`;
-     newGenres.textContent = `Genres: ${film.genres}`;
+    //  newGenres.textContent = `Genres: ${film.genres}`;
      newOverview.textContent = film.overview;
  
      newItem.appendChild(newId);
      newItem.appendChild(newPoster);
      newItem.appendChild(newTitle);
-     newItem.appendChild(newGenres);
+    //  newItem.appendChild(newGenres);
      newItem.appendChild(newOverview);
+     newItem.appendChild(Bookmark);
      node.appendChild(newItem);
    }
  }
